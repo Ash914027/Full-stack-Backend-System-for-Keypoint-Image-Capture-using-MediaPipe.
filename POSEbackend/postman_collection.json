@@ -1,0 +1,195 @@
+{
+  "info": {
+    "_postman_id": "12345678-1234-1234-1234-123456789abc",
+    "name": "MediaPipe Backend API",
+    "description": "API testing collection for MediaPipe Keypoint Extraction System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        },
+        "description": "Check API and database connectivity"
+      },
+      "response": []
+    },
+    {
+      "name": "2. Extract Pose Keypoints",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/extract-pose",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "extract-pose"
+          ]
+        },
+        "description": "Upload image and extract 33 body keypoints"
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get All Poses",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/poses?page=1&limit=10",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "poses"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        },
+        "description": "Get all poses with pagination"
+      },
+      "response": []
+    },
+    {
+      "name": "4. Get Single Pose",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/poses/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "poses",
+            "1"
+          ]
+        },
+        "description": "Get specific pose by ID (change '1' to your pose ID)"
+      },
+      "response": []
+    },
+    {
+      "name": "5. Get Image",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/images/675b8e9f2c3d4e5f6a7b8c9d",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "images",
+            "675b8e9f2c3d4e5f6a7b8c9d"
+          ]
+        },
+        "description": "Download image (replace with actual image_id)"
+      },
+      "response": []
+    },
+    {
+      "name": "6. Update Pose",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"keypoints\": [\n    {\"name\":\"nose\",\"x\":0.52,\"y\":0.31,\"z\":-0.19,\"visibility\":0.98},\n    {\"name\":\"left_eye_inner\",\"x\":0.49,\"y\":0.29,\"z\":-0.17,\"visibility\":0.94},\n    {\"name\":\"left_eye\",\"x\":0.48,\"y\":0.29,\"z\":-0.16,\"visibility\":0.95},\n    {\"name\":\"left_eye_outer\",\"x\":0.47,\"y\":0.29,\"z\":-0.15,\"visibility\":0.93},\n    {\"name\":\"right_eye_inner\",\"x\":0.53,\"y\":0.29,\"z\":-0.17,\"visibility\":0.94},\n    {\"name\":\"right_eye\",\"x\":0.54,\"y\":0.29,\"z\":-0.16,\"visibility\":0.95},\n    {\"name\":\"right_eye_outer\",\"x\":0.55,\"y\":0.29,\"z\":-0.15,\"visibility\":0.93},\n    {\"name\":\"left_ear\",\"x\":0.45,\"y\":0.31,\"z\":-0.14,\"visibility\":0.91},\n    {\"name\":\"right_ear\",\"x\":0.57,\"y\":0.31,\"z\":-0.14,\"visibility\":0.91},\n    {\"name\":\"mouth_left\",\"x\":0.49,\"y\":0.36,\"z\":-0.18,\"visibility\":0.92},\n    {\"name\":\"mouth_right\",\"x\":0.53,\"y\":0.36,\"z\":-0.18,\"visibility\":0.92},\n    {\"name\":\"left_shoulder\",\"x\":0.43,\"y\":0.46,\"z\":-0.11,\"visibility\":0.96},\n    {\"name\":\"right_shoulder\",\"x\":0.59,\"y\":0.46,\"z\":-0.11,\"visibility\":0.96},\n    {\"name\":\"left_elbow\",\"x\":0.39,\"y\":0.59,\"z\":-0.07,\"visibility\":0.94},\n    {\"name\":\"right_elbow\",\"x\":0.63,\"y\":0.59,\"z\":-0.07,\"visibility\":0.94},\n    {\"name\":\"left_wrist\",\"x\":0.36,\"y\":0.71,\"z\":-0.04,\"visibility\":0.92},\n    {\"name\":\"right_wrist\",\"x\":0.66,\"y\":0.71,\"z\":-0.04,\"visibility\":0.92},\n    {\"name\":\"left_pinky\",\"x\":0.35,\"y\":0.73,\"z\":-0.03,\"visibility\":0.87},\n    {\"name\":\"right_pinky\",\"x\":0.67,\"y\":0.73,\"z\":-0.03,\"visibility\":0.87},\n    {\"name\":\"left_index\",\"x\":0.36,\"y\":0.74,\"z\":-0.02,\"visibility\":0.89},\n    {\"name\":\"right_index\",\"x\":0.66,\"y\":0.74,\"z\":-0.02,\"visibility\":0.89},\n    {\"name\":\"left_thumb\",\"x\":0.37,\"y\":0.72,\"z\":-0.03,\"visibility\":0.88},\n    {\"name\":\"right_thumb\",\"x\":0.65,\"y\":0.72,\"z\":-0.03,\"visibility\":0.88},\n    {\"name\":\"left_hip\",\"x\":0.46,\"y\":0.76,\"z\":-0.09,\"visibility\":0.95},\n    {\"name\":\"right_hip\",\"x\":0.56,\"y\":0.76,\"z\":-0.09,\"visibility\":0.95},\n    {\"name\":\"left_knee\",\"x\":0.45,\"y\":0.89,\"z\":-0.05,\"visibility\":0.93},\n    {\"name\":\"right_knee\",\"x\":0.57,\"y\":0.89,\"z\":-0.05,\"visibility\":0.93},\n    {\"name\":\"left_ankle\",\"x\":0.44,\"y\":0.99,\"z\":-0.01,\"visibility\":0.90},\n    {\"name\":\"right_ankle\",\"x\":0.58,\"y\":0.99,\"z\":-0.01,\"visibility\":0.90},\n    {\"name\":\"left_heel\",\"x\":0.43,\"y\":1.0,\"z\":0.0,\"visibility\":0.86},\n    {\"name\":\"right_heel\",\"x\":0.59,\"y\":1.0,\"z\":0.0,\"visibility\":0.86},\n    {\"name\":\"left_foot_index\",\"x\":0.45,\"y\":1.0,\"z\":0.01,\"visibility\":0.84},\n    {\"name\":\"right_foot_index\",\"x\":0.57,\"y\":1.0,\"z\":0.01,\"visibility\":0.84}\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/poses/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "poses",
+            "1"
+          ]
+        },
+        "description": "Update pose keypoints (change '1' to your pose ID)"
+      },
+      "response": []
+    },
+    {
+      "name": "7. Manual Backup",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/backup/trigger",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "backup",
+            "trigger"
+          ]
+        },
+        "description": "Trigger backup (may take 10-30 seconds)"
+      },
+      "response": []
+    },
+    {
+      "name": "8. Delete Pose",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/poses/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "poses",
+            "1"
+          ]
+        },
+        "description": "Delete pose (change '1' to your pose ID)"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    }
+  ]
+}
