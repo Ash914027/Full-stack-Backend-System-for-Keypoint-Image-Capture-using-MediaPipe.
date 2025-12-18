@@ -2,7 +2,7 @@
 
 A complete backend system for extracting pose keypoints from images, storing data in SQL/NoSQL databases, and automating daily backups with email notifications.
 
-## 📋 Table of Contents
+## 📋 Table of Contents.
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Prerequisites](#prerequisites)
